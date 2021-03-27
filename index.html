@@ -35,6 +35,7 @@
     var getUrlString = location.href ;
     var url = new URL(getUrlString);
     var id =url.searchParams.get('id');
+    document.querySelector('.input').value = id;
     // Map appearance
     var width="100%";         // width in pixels or percentage
     var height="736px";         // height in pixels
