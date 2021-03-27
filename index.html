@@ -8,7 +8,33 @@
     <title>Find EverGreen</title>
 </head>
 <body>
+<label for="id">選擇想查看的船隻</label>
+<br>
+<select name="id" id="id" class="input">
+    <option value="">全域圖</option>
+    <option value="353136000">EverGiven 你要找的長榮在這裡</option>
+    <option value="503000101">PRELUDE</option>
+    <option value="249110000">PIONEERING SPIRIT</option>
+    <option value="538002388">FSO AFRICA</option>
+    <option value="228386800">CC CHAMPS ELYSEES</option>
+    <option value="205753000">OCEANIA</option>
+</select>
+<button onclick="changeLocate()">送出</button>
 <script type="text/javascript">
+
+    //切換定位
+    function changeLocate(){
+        let mmsi_id = document.querySelector('.input').value
+
+        location.href=url.origin + url.pathname + '?id=' + mmsi_id;
+    }
+
+
+
+    //地圖資訊
+    var getUrlString = location.href ;
+    var url = new URL(getUrlString);
+    var id =url.searchParams.get('id');
     // Map appearance
     var width="100%";         // width in pixels or percentage
     var height="736px";         // height in pixels
@@ -16,9 +42,8 @@
     var longitude="-5.40";    // center longitude (decimal degrees)
     var zoom="3";             // initial zoom (between 3 and 18)
     var names=true;          // always show ship names (defaults to false)
-
     // // Single ship tracking
-    var mmsi="353136000";     // display latest position (by MMSI)
+    var mmsi=id; //353136000 長榮    // display latest position (by MMSI)
     // var show_track=true;     // display track line (last 24 hours)
 </script>
 <script type="text/javascript" src="https://www.vesselfinder.com/aismap.js"></script>
